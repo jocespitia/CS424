@@ -115,8 +115,17 @@ trPostOrd' :: Tree a -> [a] -> [a]
 trPostOrd' Tip = \x -> x
 trPostOrd' (Branch l a r) = trPostOrd' l . trPostOrd' r . (a:)
 
---traversal level order???
+--traversal level order
+data Tree a = Tip | Branch (Tree a) a (Tree a)
+levels :: Tree a -> [[a]]
+levels Tip - [[]]
+levels (Branch l m r) = [m] : zipWith(++)(levels l)(levels r)
+zipWith (+) [1,2] [5,5]
+zipWith (*) [1,2] [3,4]
 
+--how to make zipWith
+zipWith f (x:xs) (y:ys) =
+	f * y : zipWith f xs ys
 
 
 data Tree a = Tip | Branch (Tree a) a (Tree a)

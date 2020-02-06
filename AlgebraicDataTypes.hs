@@ -73,6 +73,7 @@ instance Foldable List where
 
 -- binary tree data structure
 data Tree a = Tip | Branch (Tree a) a (Tree a) deriving Show
+--defining how we make a tree
 
 
 -- insert an element into a sorted tree
@@ -113,3 +114,33 @@ trPreOrd' (Branch l a r) = (a:) . trPreOrd' l . trPreOrd' r
 trPostOrd' :: Tree a -> [a] -> [a]
 trPostOrd' Tip = \x -> x
 trPostOrd' (Branch l a r) = trPostOrd' l . trPostOrd' r . (a:)
+
+--traversal level order???
+
+
+
+data Tree a = Tip | Branch (Tree a) a (Tree a)
+treet = Branch (Branch Tip | (Branch Tip 2 Tip))
+		(Branch Tip 4 Tip)
+--how do we know this is a tree?
+
+--if we wanna make functions from that above ^^
+--make a function that counts how big the tree is
+size :: Tree a -> Int
+size Tip = 0
+size (Branch l - r) = size l + 1 + size r
+
+
+tt :: Tree a -> [a]
+tt Tip = []
+tt(Branch l a r)
+	tt( l ++ [a] ++ tt r)
+
+
+
+
+
+
+
+
+
